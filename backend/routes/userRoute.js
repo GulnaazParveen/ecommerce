@@ -14,5 +14,11 @@ router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles("admin"), u
 
 router
   .route("/admin/user/:id")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), userAuthentication.getSingleUserAdmin);
+  .get(
+    isAuthenticatedUser,
+    authorizeRoles("admin"),
+    userAuthentication.getSingleUserAdmin
+  ).put(isAuthenticatedUser, authorizeRoles("admin"), userAuthentication.updateUserRole)
+  .delete(isAuthenticatedUser, authorizeRoles("admin"), userAuthentication.deleteUser);
+
 export default router;

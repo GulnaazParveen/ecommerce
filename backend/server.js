@@ -6,8 +6,10 @@ import bodyParser from "body-parser";
 import productRouter from "./routes/productRoute.js"
 import dbconnect from './db/databaseConnect.js';
 import errorMiddleware from './middleware/error.js';
+
 import userRouter from './routes/userRoute.js'; // Correct import
 import cookieParser from "cookie-parser"; // Import cookie-parser
+import OrderRouter from './routes/OrderRoutes.js';
 
 // config
 dotenv.config({path:"backend/config/config.env"})
@@ -24,6 +26,7 @@ dbconnect(database_url)
 // defining main route
 app.use("/api/v1",productRouter)
 app.use("/api/v1",userRouter)
+app.use("/api/v1",OrderRouter)
 
 // middleware for errors
 app.use(errorMiddleware)

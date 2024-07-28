@@ -3,73 +3,80 @@ import mongoose from "mongoose";
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please enter Product Name"]
+    required: [true, "Please enter Product Name"],
   },
-  description: { // Changed to camelCase
+  description: {
+    // Changed to camelCase
     type: String,
-    required: [true, "Please enter Product Description"]
+    required: [true, "Please enter Product Description"],
   },
   price: {
     type: Number,
-    required: [true, "Please enter Product Price"] // Corrected case
+    required: [true, "Please enter Product Price"], // Corrected case
   },
-  rating: {
+  ratings: {
     type: Number,
-    default: 0
+    default: 0,
   },
   // iamges is array of object becasue multiple image can be one product
   images: [
     {
       public_id: {
         type: String,
-        required: true
+        required: true,
       },
       url: {
         type: String,
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ],
   category: {
     type: String,
-    required: [true, "Please enter Product Category"]
+    required: [true, "Please enter Product Category"],
   },
   stock: {
     type: Number,
     required: [true, "Please enter Product Stock"],
     maxLength: [4, "Stock cannot exceed 4 characters"],
-    default: 0
+    default: 0,
   },
   numOfReviews: {
     type: Number,
-    default: 0
+    default: 0,
   },
   reviews: [
     {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+      },
       name: {
         type: String,
-        required: true
+        required: true,
       },
       rating: {
         type: Number,
-        required: true
+        required: true,
       },
       comment: {
         type: String,
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ],
-  user:{
-    type:mongoose.Schema.ObjectId,
-    ref:"User",
-    required:true
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
   },
-  createdAt: { // Changed to camelCase and corrected spelling
+  createdAt: {
+    // Changed to camelCase and corrected spelling
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-   resetPasswordToken: String,
+  resetPasswordToken: String,
   resetPasswordExpire: Date,
 });
  
