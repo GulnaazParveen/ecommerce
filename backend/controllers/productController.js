@@ -21,7 +21,7 @@ class productController {
 
   // get All Products
   static getAllProducts = async (req, res) => {
-    const resultPerPage = 8;
+    const resultPerPage = 9;
     const productsCount = await Product.countDocuments();
 
     const apiFeatures = new ApiFeatures(Product.find(), req.query)
@@ -29,7 +29,13 @@ class productController {
       .filter()
       .pagination(resultPerPage);
 
-    const products = await apiFeatures.query;
+       let products = await apiFeatures.query;
+
+       let filteredProductsCount = products.length;
+
+       apiFeatures.pagination(resultPerPage);
+
+      products = await apiFeatures.query;
 
     res.status(200).json({
       success: true,
@@ -39,6 +45,20 @@ class productController {
       filteredProductsCount: products.length,
     });
   };
+
+  // Get Product Details
+static getProductDetails = async (req, res, next) => {
+  const product = await Product.findById(req.params.id);
+
+  if (!product) {
+    return next(new ErrorHander("Product not found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    product,
+  });
+};
 
   // update product --Admin
   static updateProduct = async (req, res, next) => {

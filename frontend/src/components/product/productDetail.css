@@ -21,7 +21,9 @@
 .ProductDetails>div:last-child {
     align-items: flex-start;
 }
-
+.carousel-container{  
+    width: 500px;
+}
 .CarouselImage {
     width: 20vmax;
 }

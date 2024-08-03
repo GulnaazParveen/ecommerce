@@ -25,6 +25,9 @@ productRouter.route("/admin/products/:id")
   .put(isAuthenticatedUser, authorizeRoles("admin"), productController.updateProduct)
   .delete(isAuthenticatedUser, authorizeRoles("admin"), productController.deleteProduct);
 
+  productRouter.route("/product/:id").get(productController.getProductDetails);
+
+
   productRouter.route("/review").put(isAuthenticatedUser, productController.createProductReview);
   productRouter
     .route("/reviews")

@@ -1,0 +1,54 @@
+.custom-navbar {
+    position: fixed;
+    /* Make the navbar fixed to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Semi-transparent background */
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eb4034;
+    z-index: 1000;
+    /* Ensure the navbar is on top of other elements */
+}
+
+.navbar-logo img {
+    width: 20vmax;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: rgba(35, 35, 35, 0.8);
+    font-size: 1.3vmax;
+    transition: color 0.3s;
+}
+
+.navbar-links li a:hover {
+    color: #eb4034;
+}
+
+.navbar-icons a {
+    color: rgba(35, 35, 35, 0.8);
+    font-size: 1.5vmax;
+    margin-left: 1vmax;
+    transition: color 0.3s;
+}
+
+.navbar-icons a:hover {
+    color: #eb4034;
+}
+
+/* Add padding to the top of the content to avoid overlap with the fixed navbar */
+body {
+    padding-top: 5rem;
+    /* Adjust based on the height of the navbar */
+}

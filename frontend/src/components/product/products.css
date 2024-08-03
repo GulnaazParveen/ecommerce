@@ -9,12 +9,14 @@
 }
 
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 5vmax;
+     display: flex;
+    flex-wrap: wrap; 
+    padding: 0 9vmax;
     justify-content: center;
-    min-height: 30vh;
+    min-height: 30vh; 
+
 }
+
 
 .paginationBox {
     display: flex;
@@ -73,6 +75,7 @@
     position: absolute;
     top: 10vmax;
     left: 4vmax;
+   
 }
 
 .categoryBox {

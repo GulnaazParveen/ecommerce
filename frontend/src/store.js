@@ -1,11 +1,18 @@
+// store.js
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { thunk } from "redux-thunk"; // Correct import using named export
+import {thunk} from "redux-thunk"; // Correct import
 import { composeWithDevTools } from "redux-devtools-extension";
-import { producDetailSReducer, productsReducer } from "./reducers/productReducers";
+import {
+
+  productDetailsReducer,
+  productsReducer,
+} from "./reducers/productReducers"; // Correct reducer import
+import { userReducer } from "./reducers/userReducer";
 
 const reducer = combineReducers({
   products: productsReducer,
-  producDetailS:producDetailSReducer
+  productDetails: productDetailsReducer, // Ensure the reducer name matches here
+  user:userReducer
 });
 
 let initialState = {};
